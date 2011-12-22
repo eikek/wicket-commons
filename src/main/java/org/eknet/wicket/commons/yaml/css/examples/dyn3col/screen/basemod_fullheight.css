@@ -1,0 +1,54 @@
+/*
+ * Copyright 2011 Eike Kettner
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@media screen, projection
+{
+    body, html { height: 100% !important; padding: 0;}
+
+    .page_margins {
+        position:relative !important;
+        min-height:100%; /* real browsers */
+        height: auto !important;
+        background: #fff;
+    }
+    * html .page_margins { height:100% !important; }
+
+    /* allocate space for footer ... */
+    .page { padding-bottom: 70px; }
+
+
+    #footer {
+        position:relative !important;
+        min-width: 740px;
+        max-width: 93em;
+        margin: 0 auto;
+        /* move #footer to its position ... */
+        margin: -70px auto 0;
+
+        background: #fff;
+        border: 0 none;
+        padding: 0;
+    }
+
+    #footer_content {
+        text-align: left;
+        color:#666;
+        background: #f9f9f9;
+        padding: 10px 20px;
+        border-top: 5px #efefef solid;
+        margin: 0 10px;
+    }
+}
