@@ -74,10 +74,12 @@ public class TwoColumnCenterHeadline extends ViewOrEdit {
   protected void setViewMode() {
     add(FormattedLabel.create()
         .asHeadline(2)
-        .withText(new TextNodePropertyModel(getModel(), headline, getHeadlineDefault())));
+        .withText(new TextNodePropertyModel(getModel(), headline,
+            getDefaultValueModel(getHeadlineDefault()))));
     add(FormattedLabel.create()
         .escapeModelString(false)
-        .withText(new TextNodePropertyModel(getModel(), centerContent, getCenterContentDefault())));
+        .withText(new TextNodePropertyModel(getModel(), centerContent,
+            getDefaultValueModel(getCenterContentDefault()))));
     Subcolumns.Builder cols = Subcolumns.create()
         .addColumn(SubcolumnDef.create()
             .setColumnDef(getLeftColumn1Def())
@@ -91,27 +93,33 @@ public class TwoColumnCenterHeadline extends ViewOrEdit {
   private ComponentSupplier<FormattedLabel> getLeftContent() {
     return FormattedLabel.create()
         .escapeModelString(false)
-        .withText(new TextNodePropertyModel(getModel(), columnContent1, getColumnContent1Default()));
+        .withText(new TextNodePropertyModel(getModel(), columnContent1,
+            getDefaultValueModel(getColumnContent1Default())));
   }
 
   private ComponentSupplier<FormattedLabel> getRightContent() {
     return FormattedLabel.create()
         .escapeModelString(false)
-        .withText(new TextNodePropertyModel(getModel(), columnContent2, getColumnContent2Default()));
+        .withText(new TextNodePropertyModel(getModel(), columnContent2,
+            getDefaultValueModel(getColumnContent2Default())));
   }
   
+  @NotNull
   protected IModel<String> getHeadlineDefault() {
     return Model.of("");
   }
-  
+
+  @NotNull
   protected IModel<String> getCenterContentDefault() {
     return Model.of("");
   }
-  
+
+  @NotNull
   protected IModel<String> getColumnContent1Default() {
     return Model.of("");
   }
-  
+
+  @NotNull
   protected IModel<String> getColumnContent2Default() {
     return Model.of("");
   }

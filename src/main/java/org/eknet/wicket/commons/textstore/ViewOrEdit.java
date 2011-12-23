@@ -16,11 +16,14 @@
 
 package org.eknet.wicket.commons.textstore;
 
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.string.StringValue;
-import org.eknet.wicket.commons.components.DivContainer;
+
 import org.jetbrains.annotations.NotNull;
+
+import org.eknet.wicket.commons.components.DivContainer;
 
 /**
  * An editable text component that can work in two modes: In {@link Mode#VIEW} mode
@@ -93,5 +96,28 @@ public abstract class ViewOrEdit extends DivContainer {
   @Override
   public boolean isApplyCss() {
     return false;
+  }
+
+  /**
+   * Returns a readonly model that will return the object from the given {@code defaultValue} model
+   * only if the {@link TextNode} of this component has not been modified yet. If modified, it
+   * returns an empty string.
+   * <p/>
+   * This is used as the default behaviour when rendering default values.
+   *
+   * @param defaultValue
+   * @return
+   */
+  @NotNull
+  protected AbstractReadOnlyModel<String> getDefaultValueModel(@NotNull final IModel<String> defaultValue) {
+    return new AbstractReadOnlyModel<String>() {
+      @Override
+      public String getObject() {
+        if (!getModel().getObject().isModified()) {
+          return defaultValue.getObject();
+        }
+        return "";
+      }
+    };
   }
 }

@@ -71,7 +71,8 @@ public class TwoColumnHeadline extends ViewOrEdit {
   protected void setViewMode() {
     add(FormattedLabel.create()
         .asHeadline(2)
-        .withText(new TextNodePropertyModel(getModel(), headline, getHeadlineDefault())));
+        .withText(new TextNodePropertyModel(getModel(), headline,
+            getDefaultValueModel(getHeadlineDefault()))));
     Subcolumns.Builder cols = Subcolumns.create()
         .addColumn(SubcolumnDef.create()
             .setColumnDef(getLeftColumn1Def())
@@ -86,32 +87,39 @@ public class TwoColumnHeadline extends ViewOrEdit {
     return FormattedLabel.create()
         .escapeModelString(false)
         .mulitLine(true)
-        .withText(new TextNodePropertyModel(getModel(), columnContent1, getColumnContent1Default()));
+        .withText(new TextNodePropertyModel(getModel(), columnContent1,
+            getDefaultValueModel(getColumnContent1Default())));
   }
 
   private ComponentSupplier<FormattedLabel> getRightContent() {
     return FormattedLabel.create()
         .escapeModelString(false)
         .mulitLine(true)
-        .withText(new TextNodePropertyModel(getModel(), columnContent2, getColumnContent2Default()));
+        .withText(new TextNodePropertyModel(getModel(), columnContent2,
+            getDefaultValueModel(getColumnContent2Default())));
   }
 
+  @NotNull
   protected IModel<String> getHeadlineDefault() {
     return Model.of("");
   }
 
+  @NotNull
   protected IModel<String> getColumnContent1Default() {
     return Model.of("");
   }
 
+  @NotNull
   protected IModel<String> getColumnContent2Default() {
     return Model.of("");
   }
 
+  @NotNull
   protected SubcolumnDef.ColumnDef getLeftColumn1Def() {
     return SubcolumnDef.ColumnDef.L_50;
   }
-  
+
+  @NotNull
   protected SubcolumnDef.ColumnDef getRightColumnDef() {
     return SubcolumnDef.ColumnDef.R_50;
   }

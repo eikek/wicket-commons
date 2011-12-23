@@ -23,9 +23,11 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+
+import org.jetbrains.annotations.NotNull;
+
 import org.eknet.wicket.commons.ComponentSupplier;
 import org.eknet.wicket.commons.components.FormattedLabel;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Creates a editable component with the following layout:
@@ -66,17 +68,27 @@ public class OneColumnHeadline extends ViewOrEdit {
   protected void setViewMode() {
     add(FormattedLabel.create()
         .asHeadline(2)
-        .withText(new TextNodePropertyModel(getModel(), headline, getHeadlineDefault())));
+        .withText(new TextNodePropertyModel(getModel(), headline,
+            getDefaultValueModel(getHeadlineDefault()))));
     add(FormattedLabel.create()
         .mulitLine(true)
         .escapeModelString(false)
-        .withText(new TextNodePropertyModel(getModel(), columnContent, getColumnContentDefault())));
+        .withText(new TextNodePropertyModel(getModel(), columnContent,
+            getDefaultValueModel(getColumnContentDefault()))));
   }
 
+  /**
+   * Override this to return a default value that is rendered if the node
+   * does not contain a value.
+   *
+   * @return
+   */
+  @NotNull
   protected IModel<String> getHeadlineDefault() {
     return Model.of("");
   }
-  
+
+  @NotNull
   protected IModel<String> getColumnContentDefault() {
     return Model.of("");
   }

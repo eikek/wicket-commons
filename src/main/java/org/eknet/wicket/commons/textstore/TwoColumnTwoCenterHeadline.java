@@ -76,10 +76,12 @@ public class TwoColumnTwoCenterHeadline extends ViewOrEdit {
   protected void setViewMode() {
     add(FormattedLabel.create()
         .asHeadline(2)
-        .withText(new TextNodePropertyModel(getModel(), headline, getHeadlineDefault())));
+        .withText(new TextNodePropertyModel(getModel(), headline,
+            getDefaultValueModel(getHeadlineDefault()))));
     add(FormattedLabel.create()
         .escapeModelString(false)
-        .withText(new TextNodePropertyModel(getModel(), centerContent1, getCenterContent1Default())));
+        .withText(new TextNodePropertyModel(getModel(), centerContent1,
+            getDefaultValueModel(getCenterContent1Default()))));
     Subcolumns.Builder cols = Subcolumns.create()
         .addColumn(SubcolumnDef.create()
             .setColumnDef(getLeftColumn1Def())
@@ -90,19 +92,22 @@ public class TwoColumnTwoCenterHeadline extends ViewOrEdit {
     add(cols);
     add(FormattedLabel.create()
         .escapeModelString(false)
-        .withText(new TextNodePropertyModel(getModel(), centerContent2, getCenterContent2Default())));
+        .withText(new TextNodePropertyModel(getModel(), centerContent2,
+            getDefaultValueModel(getCenterContent2Default()))));
   }
 
   private ComponentSupplier<FormattedLabel> getLeftContent() {
     return FormattedLabel.create()
         .escapeModelString(false)
-        .withText(new TextNodePropertyModel(getModel(), columnContent1, getColumnContent1Default()));
+        .withText(new TextNodePropertyModel(getModel(), columnContent1,
+            getDefaultValueModel(getColumnContent1Default())));
   }
 
   private ComponentSupplier<FormattedLabel> getRightContent() {
     return FormattedLabel.create()
         .escapeModelString(false)
-        .withText(new TextNodePropertyModel(getModel(), columnContent2, getColumnContent2Default()));
+        .withText(new TextNodePropertyModel(getModel(), columnContent2,
+            getDefaultValueModel(getColumnContent2Default())));
   }
 
   protected IModel<String> getHeadlineDefault() {
