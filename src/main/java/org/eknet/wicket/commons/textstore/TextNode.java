@@ -44,6 +44,13 @@ public interface TextNode {
   boolean isCreated();
 
   /**
+   * Returns whether this node has been modified.
+   *
+   * @return
+   */
+  boolean isModified();
+
+  /**
    * Returns the unique id of this {@link TextNode}.
    * 
    * @return
