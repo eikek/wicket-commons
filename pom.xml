@@ -21,7 +21,7 @@
 
   <groupId>org.eknet.wicket.commons</groupId>
   <artifactId>wicket-commons</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
 
   <packaging>bundle</packaging>
 
